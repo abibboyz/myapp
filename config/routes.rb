@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+   #Simple Route
+   get 'demo/index'
+ 
+ #Root route
+ #root 'demo#index'
+ 
+ 
+ #Default route
+ #get ':controller(/:action(/:id))'
 end
