@@ -1,6 +1,6 @@
 <div class="subjects index">
   <h1>Subjects</h1>
-  <%= link_to("Add new Subject", '#',:class => 'action new')%>
+  <%= link_to("Add new Subject", 'subjects/new',:class => 'action new')%>
 
 
   <table class="listing" summary="Subject list">
@@ -18,8 +18,11 @@
       <td class="center"><%= subject.visible ? 'Yes':'No'%></td>
       <td class="center"><%= subject.pages.size%></td>
       <td class = "action">
-        <%=link_to("Show",'#',:class=>'acton show')%>
-        <%=link_to("Edit",'#',:class=>'acton edit')%>
+        <%=link_to("Show",'subjects/#{subject.id}',:class=>'acton show')%>
+       <!-- <%=link_to("Show",{:controller => 'subjects', :action => 'show', :id => subject.id},:class=>'acton show')%> -->
+       <!-- <%=link_to("Show",subject_path(subject.id),:class=>'acton show')%>  -->
+        <%=link_to("Edit",edit_subject_path(subject.id),:class=>'acton edit')%>
+        
         <%=link_to("Delete",'#',:class=>'acton delete')%>
       </td>
     </tr>

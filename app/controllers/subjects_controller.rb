@@ -5,21 +5,43 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @subject = Subject.find(params[:id])
   end
 
   def new
+    @subject = Subject.new({:name => 'Default'})
   end
 
   def create
+    @subject= Subject.new(subject_params) # parameters -> (params.required(:subject).permit(:name, :visible))
+    if @subject.save
+      redirect_to(subject_path)
+    else
+      render('new')
+    end
   end
 
   def edit
+    @subject = Subject.find(params[:id])
   end
+  
   def update
-  end
+    @subject = Subject.find(params[:id])
 
+    if @subject.update(subject_params)
+      redirect_to(subject_path(@subject))
+    else
+      render('edit')
+    end
+  end
+  
   def delete
   end
   def destroy 
+  end
+
+  private
+  def subject_params
+    params.required(:subject).permit(:name,:position,:visible)
   end
 end
