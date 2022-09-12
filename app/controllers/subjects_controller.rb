@@ -15,7 +15,7 @@ class SubjectsController < ApplicationController
   def create
     @subject= Subject.new(subject_params) # parameters -> (params.required(:subject).permit(:name, :visible))
     if @subject.save
-      redirect_to(subject_path)
+      redirect_to(subjects_path)
     else
       render('new')
     end
@@ -36,8 +36,13 @@ class SubjectsController < ApplicationController
   end
   
   def delete
+
+    @subject = Subject.find(params[:id])
   end
-  def destroy 
+  def destroy
+    @subject = Subject.find(params[:id])
+    @subject.destroy
+    redirect_to(subjects_path)
   end
 
   private

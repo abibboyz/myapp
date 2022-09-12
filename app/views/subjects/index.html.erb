@@ -23,7 +23,7 @@
        <!-- <%=link_to("Show",subject_path(subject.id),:class=>'acton show')%>  -->
         <%=link_to("Edit",edit_subject_path(subject.id),:class=>'acton edit')%>
         
-        <%=link_to("Delete",'#',:class=>'acton delete')%>
+        <%=link_to("Delete",delete_subject_path(subject.id),:class=>'acton delete')%>
       </td>
     </tr>
     <%end%>
